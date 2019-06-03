@@ -1,86 +1,60 @@
 <template>
   <div class="history">
-    <h1 class="title font-weight-bold ml-4 mt-3">Історія завантажень рестрів оплат та показів</h1>
+    <h1 class="headline font-weight-bold ml-4 mt-4">Історія завантажень рестрів оплат та показів</h1>
 <!--    <div class="dev">-->
 <!--      <v-divider inset></v-divider>-->
 <!--    </div>-->
-    <v-container class="my-5">
-      <v-card flat class="pa-2" color="grey lighten-3">
+    <v-container class="my-2">
+      <v-card flat class="pa-2 mb-2" color="grey lighten-5">
         <v-layout align-center row>
           <v-flex xs12>
-            <v-menu class="mr-3">
-              <v-text-field :value="formattedDate(dateBegin)" slot="activator" label="Початок" prepend-icon="date_range" readonly></v-text-field>
-              <v-date-picker v-model="dateBegin" locale="uk-uk"></v-date-picker>
+            <v-menu class="mr-3" offset-y transition="scale-transition">
+              <v-text-field color='red darken-1' :value="formattedDate(dateBegin)" slot="activator" label="Початок" prepend-icon="date_range" readonly></v-text-field>
+              <v-date-picker color="red darken-1" v-model="dateBegin" locale="uk-uk"></v-date-picker>
             </v-menu>
-            <v-menu class="mr-4">
-              <v-text-field :value="formattedDate(dateEnd)" slot="activator" label="Закінчення" prepend-icon="date_range" readonly></v-text-field>
-              <v-date-picker v-model="dateEnd" locale="uk-uk"></v-date-picker>
+            <v-menu class="mr-4" offset-y transition="scale-transition">
+              <v-text-field color='red darken-1' :value="formattedDate(dateEnd)" slot="activator" label="Закінчення" prepend-icon="date_range" readonly></v-text-field>
+              <v-date-picker color="red darken-1" v-model="dateEnd" locale="uk-uk"></v-date-picker>
             </v-menu>
             <v-select
               :items="selectItems"
-              label="Solo field"
+              label="Операція:"
               class="mr-4 d-inline-flex"
               :style="{ width: '200px' }"
               v-model="selectedItem"
-              min-width="200px"
-              max-width="200px"
+              offset-y
             ></v-select>
-            <v-btn color="red darken-3 white--text" depressed round >
+            <v-btn color="grey darken-1 white--text" depressed round >
+              <v-icon left>find_in_page</v-icon>
               Показати
             </v-btn>
           </v-flex>
         </v-layout>
       </v-card>
-      <v-card flat>
-        <v-layout row wrap :class="`pa-3 pay-item meters`">
-          <v-flex>
-            <v-chip large :class="`meters white--text`">Покази</v-chip>
+      <v-card flat v-for="historyItem in historyList" :key="`history-item-${historyItem.id}`">
+        <v-layout row wrap :class="`pa-3 pay-item ${historyItem.kind}`">
+          <v-flex md1 sm4>
+            <v-chip large :class="`${historyItem.kind} white--text`">{{ historyItem.kindName }}</v-chip>
           </v-flex>
-          <v-flex>
+          <v-flex md2 sm4>
             <div class="caption grey--text">Дата операції</div>
-            <div>22/06/2019</div>
+            <div>{{ historyItem.operationDate }}</div>
           </v-flex>
-          <v-flex>
+          <v-flex md4 sm4>
             <div class="caption grey--text">Фінансові установи</div>
-            <div>Усі банки, котрі приймають платежі по системі EPS</div>
+            <div>{{ historyItem.banks }}</div>
           </v-flex>
-          <v-flex>
+          <v-flex md2 sm4>
             <div class="caption grey--text">Користувач</div>
-            <div>Буняк К. М.</div>
+            <div>{{ historyItem.user }}</div>
           </v-flex>
-          <v-flex>
+          <v-flex md1 sm4>
             <div class="caption grey--text">К-сть квитанці</div>
-            <div>60</div>
+            <div>{{ historyItem.receipts }}</div>
           </v-flex>
-          <v-flex>
+          <v-flex md2 sm4>
             <div class="caption grey--text">Сума (грн.)</div>
-            <div>156565.00</div>
-          </v-flex>
-        </v-layout>
-        <v-divider></v-divider>
-        <v-layout row wrap :class="`pa-3 pay-item pays`">
-          <v-flex>
-            <v-chip large :class="`pays white--text`">Оплати</v-chip>
-          </v-flex>
-          <v-flex>
-            <div class="caption grey--text">Дата операції</div>
-            <div>22/06/2019</div>
-          </v-flex>
-          <v-flex>
-            <div class="caption grey--text">Фінансові установи</div>
-            <div>Усі банки, котрі приймають платежі по системі EPS</div>
-          </v-flex>
-          <v-flex>
-            <div class="caption grey--text">Користувач</div>
-            <div>Буняк К. М.</div>
-          </v-flex>
-          <v-flex>
-            <div class="caption grey--text">К-сть квитанці</div>
-            <div>60</div>
-          </v-flex>
-          <v-flex>
-            <div class="caption grey--text">Сума (грн.)</div>
-            <div>156565.00</div>
+            <div>{{ historyItem.sum }}</div>
           </v-flex>
         </v-layout>
         <v-divider></v-divider>
@@ -101,17 +75,22 @@ export default {
       dateBegin: null,
       dateEnd: null,
       dropdown_font: ['Arial', 'Calibri', 'Courier', 'Verdana'],
-      selectedItem: ''
+      selectedItem: 'Покази'
     }
   },
   computed: {
-    items () {
+    historyList () {
       return [
-        { title: 'first' }
+        { kind: 'pays', kindName: 'Оплати', operationDate: '10/10/2018', banks: 'АТ "Ощадбанк", ПАТ КБ "Приватбанк"', user: 'Пронська В. А.', receipts: '1454', sum: 4545645.55 },
+        { kind: 'meters', kindName: 'Покази', operationDate: '10/12/2018', banks: 'Усі банки, які приймають платежі через систему EPS"', user: 'Волянкськ Б. А.', receipts: '1454', sum: 0.00 },
+        { kind: 'pays', kindName: 'Оплати', operationDate: '10/10/2018', banks: 'АТ "Ощадбанк", ПАТ КБ "Приватбанк"', user: 'Пронська В. А.', receipts: '1454', sum: 4545645.55 },
+        { kind: 'pays', kindName: 'Оплати', operationDate: '10/10/2018', banks: 'АТ "Ощадбанк", ПАТ КБ "Приватбанк"', user: 'Пронська В. А.', receipts: '1454', sum: 4545645.55 },
+        { kind: 'pays', kindName: 'Оплати', operationDate: '10/10/2018', banks: 'АТ "Ощадбанк", ПАТ КБ "Приватбанк"', user: 'Пронська В. А.', receipts: '1454', sum: 4545645.55 },
+        { kind: 'meters', kindName: 'Покази', operationDate: '10/12/2018', banks: 'Усі банки, які приймають платежі через систему EPS"', user: 'Волянкськ Б. А.', receipts: '1454', sum: 0.00 }
       ]
     },
     selectItems () {
-      return ['Foo', 'Bar', 'Fizz', 'Buzz']
+      return ['Оплати', 'Покази', 'Усе']
     }
   },
   methods: {
@@ -124,15 +103,15 @@ export default {
 
 <style scoped>
   .pay-item.pays {
-    border-left: 4px solid #3cd1c2;
+    border-left: 4px solid #26bfe9;
   }
   .pay-item.meters {
-    border-left: 4px solid tomato;
+    border-left: 4px solid #ff7345;
   }
   .v-chip.pays {
-    background: #3cd1c2;
+    background: #26bfe9;
   }
   .v-chip.meters {
-    background: tomato;
+    background: #ff7345;
   }
 </style>
