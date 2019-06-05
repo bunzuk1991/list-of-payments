@@ -15,6 +15,7 @@
             <v-icon left color="red darken-2">person</v-icon>
             Увійти
           </v-btn>
+
           <v-divider vertical></v-divider>
         </v-toolbar-items>
         <v-toolbar-items v-for="(item, i) in menuItems" :key="`menu-item-${i}`">
