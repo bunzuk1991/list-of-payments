@@ -17,7 +17,8 @@ export default {
         { id: 3, name: 'test2', password: '123456', admin: false, organisations: [{ id: 1, name: 'ОСББ №5' }, { id: 1, name: 'ОСББ №6' }] },
         { id: 4, name: 'test3', password: '123456', admin: false, organisations: [{ id: 1, name: 'ОСББ №7' }, { id: 1, name: 'ОСББ №8' }] },
         { id: 5, name: 'test4', password: '123456', admin: false, organisations: [{ id: 1, name: 'ОСББ №9' }, { id: 1, name: 'ОСББ №10' }] },
-        { id: 6, name: 'test1', password: '123456', admin: false, organisations: [{ id: 1, name: 'ОСББ №11' }, { id: 1, name: 'ОСББ №12' }] }
+        { id: 6, name: 'test1', password: '123456', admin: false, organisations: [{ id: 1, name: 'ОСББ №11' }, { id: 1, name: 'ОСББ №12' }] },
+        { id: 7, name: 'test1', password: '123456', admin: false, organisations: [{ id: 1, name: 'ОСББ №11' }, { id: 1, name: 'ОСББ №12' }] }
       ]
     }
   }
