@@ -1,28 +1,79 @@
 <template>
   <div class="user-list">
-    <h1 class="headline font-weight-bold ml-4 mt-4">Перелік організацій</h1>
-    <v-container>
-      <v-layout row wrap>
-        <v-flex xs12>
-          <ul>
-            <li v-for="org in organisations" :key="org.id">
-              {{ org.id }}
-              {{ org.name }}
-              {{ org.active }}
-            </li>
-          </ul>
-        </v-flex>
-      </v-layout>
+    <v-container class="my-2">
+      <v-card flat class="pa-2 mb-2" color="grey lighten-5">
+        <v-layout align-content-space-between justify-space-between row>
+          <v-flex xs12>
+              <v-text-field
+                name="search"
+                label="Пошук"
+                type="text"
+                :rules="[v => !v]"
+                v-model="search"
+                class="ml-3"
+              ></v-text-field>
+          </v-flex>
+          <v-flex shrink align-self-center>
+            <app-org-edit :create="true"></app-org-edit>
+          </v-flex>
+        </v-layout>
+      </v-card>
+      <v-card flat v-for="org in filteredList" :key="org.id" class="org-item">
+        <v-layout align-center justify-space-between row wrap>
+          <v-flex md3 sm3 class="pa-3">
+            <div>{{ org.name }}</div>
+          </v-flex>
+          <v-divider vertical></v-divider>
+          <v-flex md2 sm2>
+            <div>{{ org.code }}</div>
+          </v-flex>
+          <v-divider vertical></v-divider>
+          <v-flex md3 sm3>
+            <div>{{ org.services }}</div>
+          </v-flex>
+          <v-divider vertical></v-divider>
+          <v-flex md1 sm1>
+            <v-chip large :class="'org-chip-active white--text'" v-if="org.active" v-text="'Активний'"></v-chip>
+            <v-chip large :class="'org-chip-deactivate white--text'" v-else v-text="'Відключений'"></v-chip>
+          </v-flex>
+          <v-divider vertical></v-divider>
+          <v-flex align-self-end shrink>
+            <app-org-edit :org="org"></app-org-edit>
+            <v-btn outline fab small color="red lighten-1">
+              <v-icon>delete</v-icon>
+            </v-btn>
+          </v-flex>
+        </v-layout>
+        <v-divider></v-divider>
+      </v-card>
     </v-container>
   </div>
 </template>
 
 <script>
+import AppOrgEdit from './AppOrgEdit'
 export default {
   name: 'AppOrgList',
+  components: {
+    AppOrgEdit
+  },
+  data () {
+    return {
+      search: ''
+    }
+  },
   computed: {
-    organisations () {
-      return this.$store.getters.organisations
+    filteredList () {
+      const organisations = this.$store.getters.organisations
+      if (this.search) {
+        return organisations.filter(item => {
+          return item.name.toLowerCase().includes(this.search) ||
+            item.code.toLowerCase().includes(this.search) ||
+            item.services.toLowerCase().includes(this.search)
+        })
+      } else {
+        return organisations
+      }
     }
   },
   created () {
@@ -32,5 +83,22 @@ export default {
 </script>
 
 <style scoped>
-
+  .v-chip.org-chip-active {
+    width: 100px;
+    background: #2b88ff;
+    text-align: center;
+    height: 26px;
+    display: block;
+    line-height: 26px;
+    margin: 0 auto;
+  }
+  .v-chip.org-chip-deactivate {
+    width: 100px;
+    background: #ff7345;
+    text-align: center;
+    height: 26px;
+    display: block;
+    line-height: 26px;
+    margin: 0 auto;
+  }
 </style>
