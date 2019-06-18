@@ -15,8 +15,12 @@ export default {
     },
     createOrg (state, payload) {
       const newOrg = { ...payload, id: Math.random() }
-      console.log(newOrg)
       state.organisations.push(newOrg)
+    },
+    deleteOrg (state, payload) {
+      const filtered = state.organisations.filter(item => item !== payload)
+      console.log(payload)
+      console.log(filtered)
     }
   },
   actions: {
@@ -37,6 +41,9 @@ export default {
     },
     createOrg ({ commit }, payload) {
       commit('createOrg', payload)
+    },
+    deleteOrg ({ commit }, payload) {
+      commit('deleteOrg', payload)
     }
   },
   getters: {

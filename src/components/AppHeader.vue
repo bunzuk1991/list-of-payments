@@ -7,7 +7,10 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <modal v-model="loginShowModal"></modal>
+          <modal v-model="loginShowModal" @modalDialogConfirm="confirmDelete">
+            <template v-slot:title>Вилучити елемент?</template>
+            <template v-slot:paragraph>Після вилучення даного елемента, Ви не зможете його відмінити. Для відміни вилучення - команда "Відмінити, для підтвердження - команда "Підтвердити""</template>
+          </modal>
           <v-btn
             flat
             @click="loginShowModal = !loginShowModal"
@@ -58,8 +61,8 @@ export default {
     }
   },
   methods: {
-    testFunc () {
-      this.loginShowModal = !this.loginShowModal
+    confirmDelete (value) {
+      console.log('modal confirm', value)
     }
   }
 }
