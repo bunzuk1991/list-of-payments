@@ -62,7 +62,6 @@ export default {
   },
   methods: {
     confirmDelete (value) {
-      console.log('modal confirm', value)
     }
   }
 }

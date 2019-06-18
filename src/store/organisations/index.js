@@ -18,9 +18,7 @@ export default {
       state.organisations.push(newOrg)
     },
     deleteOrg (state, payload) {
-      const filtered = state.organisations.filter(item => item !== payload)
-      console.log(payload)
-      console.log(filtered)
+      state.organisations = state.organisations.filter(item => item !== payload)
     }
   },
   actions: {

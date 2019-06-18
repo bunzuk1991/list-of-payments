@@ -1,7 +1,12 @@
 <template>
     <v-dialog
       v-model="showDialog"
-      max-width="500px">
+      max-width="500px"
+      persistent
+    >
+      <v-btn outline fab small color="red lighten-1" slot="activator">
+        <v-icon>delete</v-icon>
+      </v-btn>
       <v-card>
         <v-card-title primary-title class="headline red darken-1 white--text">
           <slot name="title">Use Google's location service?</slot>
@@ -31,17 +36,14 @@
 export default {
   name: 'Modal',
   props: {
-    dialogVisible: {
-      type: Boolean
-    },
     org: {
-      type: String,
-      default: ''
+      type: Object,
+      default () { return {} }
     }
   },
   data () {
     return {
-      showDialog: null
+      showDialog: false
     }
   },
   methods: {
@@ -53,16 +55,7 @@ export default {
       this.showDialog = false
       this.$emit('modalDialogConfirm', dialogObg)
     }
-  },
-  watch: {
-    dialogVisible () {
-      this.showDialog = this.dialogVisible
-    }
   }
-  // model: {
-  //   prop: 'dialogVisible',
-  //   event: 'change'
-  // },
 }
 </script>
 

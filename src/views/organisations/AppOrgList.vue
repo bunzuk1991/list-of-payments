@@ -39,10 +39,7 @@
           <v-divider vertical></v-divider>
           <v-flex align-self-end shrink>
             <app-org-edit :org="org"></app-org-edit>
-            <v-btn outline fab small color="red lighten-1" @click="appOrgShowModal = !appOrgShowModal">
-              <v-icon>delete</v-icon>
-            </v-btn>
-            <modal @modalDialogConfirm="confirmDelete" :org="org.name" :dialogVisible="appOrgShowModal" input="appOrgShowModal = $event">
+            <modal @modalDialogConfirm="confirmDelete" :org="org">
               <template v-slot:title>Вилучити елемент?</template>
               <template v-slot:paragraph>Після вилучення даного елемента, Ви не зможете його відмінити. Для відміни вилучення - команда "Відмінити, для підтвердження - команда "Підтвердити""</template>
             </modal>
@@ -85,7 +82,6 @@ export default {
   },
   methods: {
     confirmDelete (value) {
-      console.log(value)
       if (value.confirm) {
         this.$store.dispatch('deleteOrg', value.org)
       }

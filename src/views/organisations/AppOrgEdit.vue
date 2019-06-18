@@ -2,6 +2,7 @@
   <v-dialog
     width="400px"
     v-model="modal"
+    persistent
   >
     <v-btn round class="grey lighten-2 mr-3" depressed flat slot="activator" v-if="create">Нова організація</v-btn>
 <!--    <v-btn round small class="grey lighten-3 mr-3" flat slot="activator" v-else>Редагувати</v-btn>-->
@@ -114,7 +115,6 @@ export default {
       }
       if (this.editedName !== '' && this.editedCode !== '' && this.editedServices !== '') {
         if (this.create) {
-          console.log(OrgObject)
           this.$store.dispatch('createOrg', OrgObject)
         } else {
           this.$store.dispatch('updateOrg', OrgObject)
