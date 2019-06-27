@@ -29,8 +29,12 @@
             </v-layout>
           </v-flex>
         </v-layout>
-    </v-card>
+      </v-card>
       <v-card>
+        <v-card-text>
+          <h3 class="font-weight-regular text-uppercase">Комунальні платежі "Єдина квитанція"</h3>
+        </v-card-text>
+        <v-divider></v-divider>
         <v-card-text>
           <v-layout align-center justify-space-between row wrap>
             <v-flex xs12 md8>
@@ -39,155 +43,164 @@
               </div>
             </v-flex>
             <v-flex shrink>
-                <v-btn>Додати послугу</v-btn>
-                <v-btn class="btn-image-only">
-                  <v-icon dark>add</v-icon>
-                </v-btn>
+              <v-btn>Додати послугу</v-btn>
+              <v-btn class="btn-image-only">
+                <v-icon dark>add</v-icon>
+              </v-btn>
             </v-flex>
           </v-layout>
         </v-card-text>
         <v-divider></v-divider>
-        <v-card-text>
-          <h3 class="font-weight-regular text-uppercase">Комунальні платежі "Єдина квитанція"</h3>
-        </v-card-text>
-        <v-divider></v-divider>
         <v-card-text class="px-5">
-          <v-container grid-list-xs>
-            <v-layout align-start justify-space-between row wrap fill-height>
+            <v-layout align-start justify-space-between row wrap fill-height style="border: 1px solid #d9d9d9">
               <v-flex md12>
                 <v-layout row wrap>
-                  <v-flex md9>
-                    <v-layout row wrap offset-md-1 class="pa-3 text-md-center grey lighten-3">
-                      <v-flex md4 class="text-md-left">Послуга</v-flex>
-                      <v-flex md3>Особовий рахунок</v-flex>
-                      <v-flex md2>Місяць</v-flex>
-                      <v-flex md3>Сума</v-flex>
+                  <v-flex md10>
+                    <v-layout row wrap offset-lg-1 class="pa-3 text-md-center grey lighten-4">
+                      <v-flex xs8 sm12 md4 class="text-md-left"><div>Послуга</div></v-flex>
+                      <v-flex xs4 sm4 md3><div>Особовий рахунок</div></v-flex>
+                      <v-flex xs8 sm4 md2><div>Місяць</div></v-flex>
+                      <v-flex xs4 sm4 md3><div>Сума</div></v-flex>
                     </v-layout>
-                    <v-layout row wrap offset-md-1 class=" text-md-center grey lighten-4">
-                      <v-flex md4 class="text-md-left pa-3" style="border-right: 1px solid #eeeeee">
-                        <div class="pl-3">
+                    <v-hover>
+                      <v-layout slot-scope="{ hover }" :class="`${hover ? 'transition-fast-in-fast-out grey lighten-5': '' }`" row wrap offset-lg-1 class=" text-md-center subheading font-weight-light">
+                      <v-flex xs8 sm12 md4 class="text-md-left pa-2" style="border-right: 1px solid #eeeeee">
+                        <div class="pl-2">
                           <span>
-                            <v-icon class="mr-3">person</v-icon>
+                            <v-icon class="mr-2">person</v-icon>
                           </span>
-                          <span class="subheading font-weight-medium">Водопостачання</span>
+                          <span>Водопостачання</span>
                         </div>
                       </v-flex>
-                      <v-flex md3 class="pa-3"><div>544545</div></v-flex>
-                      <v-flex md2 class="pa-3"><div>Травень 2019</div></v-flex>
-                      <v-flex md3 class="pa-3"><div>0.00</div></v-flex>
+                      <v-flex xs4 sm4 md3 class="pa-2"><div>544545</div></v-flex>
+                      <v-flex xs8 sm4 md2 class="pa-2"><div>Травень</div></v-flex>
+                      <v-flex xs4 sm4 md3 class="pa-2"><div>0.00</div></v-flex>
                     </v-layout>
-                    <v-layout row wrap offset-md-1 class=" text-md-center grey lighten-4">
-                      <v-flex md4 class="text-md-left pa-3" style="border-right: 1px solid #eeeeee">
-                        <div class="pl-3">
+                    </v-hover>
+                    <v-hover>
+                      <v-layout slot-scope="{ hover }" :class="`${hover ? 'transition-fast-in-fast-out grey lighten-5': '' }`" row wrap offset-lg-1 class=" text-md-center subheading font-weight-light">
+                        <v-flex xs8 sm12 md4 class="text-md-left pa-2" style="border-right: 1px solid #eeeeee">
+                          <div class="pl-2">
                           <span>
-                            <v-icon class="mr-3">person</v-icon>
+                            <v-icon class="mr-2">person</v-icon>
                           </span>
-                          <span class="subheading font-weight-medium">Водопостачання</span>
-                        </div>
-                      </v-flex>
-                      <v-flex md3 class="pa-3"><div>544545</div></v-flex>
-                      <v-flex md2 class="pa-3"><div>Травень 2019</div></v-flex>
-                      <v-flex md3 class="pa-3"><div>0.00</div></v-flex>
-                    </v-layout>
-                    <v-layout row wrap offset-md-1 class=" text-md-center grey lighten-4">
-                      <v-flex md4 class="text-md-left pa-3" style="border-right: 1px solid #eeeeee">
-                        <div class="pl-3">
-                          <span>
-                            <v-icon class="mr-3">person</v-icon>
-                          </span>
-                          <span class="subheading font-weight-medium">Водопостачання</span>
-                        </div>
-                      </v-flex>
-                      <v-flex md3 class="pa-3"><div>544545</div></v-flex>
-                      <v-flex md2 class="pa-3"><div>Травень 2019</div></v-flex>
-                      <v-flex md3 class="pa-3"><div>0.00</div></v-flex>
-                    </v-layout>
-                    <v-layout row wrap offset-md-1 class=" text-md-center grey lighten-4">
-                      <v-flex md4 class="text-md-left pa-3" style="border-right: 1px solid #eeeeee">
-                        <div class="pl-3">
-                          <span>
-                            <v-icon class="mr-3">person</v-icon>
-                          </span>
-                          <span class="subheading font-weight-medium">Водопостачання</span>
-                        </div>
-                      </v-flex>
-                      <v-flex md3 class="pa-3"><div>544545</div></v-flex>
-                      <v-flex md2 class="pa-3"><div>Травень 2019</div></v-flex>
-                      <v-flex md3 class="pa-3"><div>0.00</div></v-flex>
-                    </v-layout>
-                    <v-layout row wrap offset-md-1 class=" text-md-center grey lighten-4">
-                      <v-flex md4 class="text-md-left pa-3" style="border-right: 1px solid #eeeeee">
-                        <div class="pl-3">
-                          <span>
-                            <v-icon class="mr-3">person</v-icon>
-                          </span>
-                          <span class="subheading font-weight-medium">Водопостачання</span>
-                        </div>
-                      </v-flex>
-                      <v-flex md3 class="pa-3"><div>544545</div></v-flex>
-                      <v-flex md2 class="pa-3"><div>Травень 2019</div></v-flex>
-                      <v-flex md3 class="pa-3"><div>0.00</div></v-flex>
-                    </v-layout>
-                    <v-layout row wrap offset-md-1 class=" text-md-center grey lighten-4">
-                      <v-flex md4 class="text-md-left pa-3" style="border-right: 1px solid #eeeeee">
-                        <div class="pl-3">
-                          <span>
-                            <v-icon class="mr-3">person</v-icon>
-                          </span>
-                          <span class="subheading font-weight-medium">Водопостачання</span>
-                        </div>
-                      </v-flex>
-                      <v-flex md3 class="pa-3"><div>544545</div></v-flex>
-                      <v-flex md2 class="pa-3"><div>Травень 2019</div></v-flex>
-                      <v-flex md3 class="pa-3"><div>0.00</div></v-flex>
-                    </v-layout>
-                    <v-layout row wrap offset-md-1 class=" text-md-center grey lighten-4">
-                      <v-flex md4 class="text-md-left pa-3" style="border-right: 1px solid #eeeeee">
-                        <div class="pl-3">
-                          <span>
-                            <v-icon class="mr-3">person</v-icon>
-                          </span>
-                          <span class="subheading font-weight-medium">Водопостачання</span>
-                        </div>
-                      </v-flex>
-                      <v-flex md3 class="pa-3"><div>544545</div></v-flex>
-                      <v-flex md2 class="pa-3"><div>Травень 2019</div></v-flex>
-                      <v-flex md3 class="pa-3"><div>0.00</div></v-flex>
-                    </v-layout>
-                    <v-layout row wrap offset-md-1 class=" text-md-center grey lighten-4">
-                      <v-flex md4 class="text-md-left pa-3" style="border-right: 1px solid #eeeeee">
-                        <div class="pl-3">
-                          <span>
-                            <v-icon class="mr-3">person</v-icon>
-                          </span>
-                          <span class="subheading font-weight-medium">Водопостачання</span>
-                        </div>
-                      </v-flex>
-                      <v-flex md3 class="pa-3"><div>544545</div></v-flex>
-                      <v-flex md2 class="pa-3"><div>Травень 2019</div></v-flex>
-                      <v-flex md3 class="pa-3"><div>0.00</div></v-flex>
-                    </v-layout>
-                    <v-layout row wrap offset-md-1 class=" text-md-center grey lighten-4">
-                      <v-flex md4 class="text-md-left pa-3" style="border-right: 1px solid #eeeeee">
-                        <div class="pl-3">
-                          <span>
-                            <v-icon class="mr-3">person</v-icon>
-                          </span>
-                          <span class="subheading font-weight-medium">Водопостачання</span>
-                        </div>
-                      </v-flex>
-                      <v-flex md3 class="pa-3"><div>544545</div></v-flex>
-                      <v-flex md2 class="pa-3"><div>Травень 2019</div></v-flex>
-                      <v-flex md3 class="pa-3"><div>0.00</div></v-flex>
-                    </v-layout>
-                  </v-flex>
-                  <v-flex md3 class="grey lighten-3">
-                    <v-container>
-                      <v-layout align-center justify-space-around row fill-height wrap class="pl-2 text-md-center">
-                        <v-flex md12>
-                          <h4>Оплачено цього місяця:</h4>
-                          <h2 class="mb-2">296.00</h2>
+                            <span>Водопостачання</span>
+                          </div>
                         </v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>544545</div></v-flex>
+                        <v-flex xs8 sm4 md2 class="pa-2"><div>Травень</div></v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>0.00</div></v-flex>
+                      </v-layout>
+                    </v-hover>
+                    <v-hover>
+                      <v-layout slot-scope="{ hover }" :class="`${hover ? 'transition-fast-in-fast-out grey lighten-5': '' }`" row wrap offset-lg-1 class=" text-md-center subheading font-weight-light">
+                        <v-flex xs8 sm12 md4 class="text-md-left pa-2" style="border-right: 1px solid #eeeeee">
+                          <div class="pl-2">
+                          <span>
+                            <v-icon class="mr-2">person</v-icon>
+                          </span>
+                            <span>Водопостачання</span>
+                          </div>
+                        </v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>544545</div></v-flex>
+                        <v-flex xs8 sm4 md2 class="pa-2"><div>Травень</div></v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>0.00</div></v-flex>
+                      </v-layout>
+                    </v-hover>
+                    <v-hover>
+                      <v-layout slot-scope="{ hover }" :class="`${hover ? 'transition-fast-in-fast-out grey lighten-5': '' }`" row wrap offset-lg-1 class=" text-md-center subheading font-weight-light">
+                        <v-flex xs8 sm12 md4 class="text-md-left pa-2" style="border-right: 1px solid #eeeeee">
+                          <div class="pl-2">
+                          <span>
+                            <v-icon class="mr-2">person</v-icon>
+                          </span>
+                            <span>Водопостачання</span>
+                          </div>
+                        </v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>544545</div></v-flex>
+                        <v-flex xs8 sm4 md2 class="pa-2"><div>Травень</div></v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>0.00</div></v-flex>
+                      </v-layout>
+                    </v-hover>
+                    <v-hover>
+                      <v-layout slot-scope="{ hover }" :class="`${hover ? 'transition-fast-in-fast-out grey lighten-5': '' }`" row wrap offset-lg-1 class=" text-md-center subheading font-weight-light">
+                        <v-flex xs8 sm12 md4 class="text-md-left pa-2" style="border-right: 1px solid #eeeeee">
+                          <div class="pl-2">
+                          <span>
+                            <v-icon class="mr-2">person</v-icon>
+                          </span>
+                            <span>Водопостачання</span>
+                          </div>
+                        </v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>544545</div></v-flex>
+                        <v-flex xs8 sm4 md2 class="pa-2"><div>Травень</div></v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>0.00</div></v-flex>
+                      </v-layout>
+                    </v-hover>
+                    <v-hover>
+                      <v-layout slot-scope="{ hover }" :class="`${hover ? 'transition-fast-in-fast-out grey lighten-5': '' }`" row wrap offset-lg-1 class=" text-md-center subheading font-weight-light">
+                        <v-flex xs8 sm12 md4 class="text-md-left pa-2" style="border-right: 1px solid #eeeeee">
+                          <div class="pl-2">
+                          <span>
+                            <v-icon class="mr-2">person</v-icon>
+                          </span>
+                            <span>Водопостачання</span>
+                          </div>
+                        </v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>544545</div></v-flex>
+                        <v-flex xs8 sm4 md2 class="pa-2"><div>Травень</div></v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>0.00</div></v-flex>
+                      </v-layout>
+                    </v-hover>
+                    <v-hover>
+                      <v-layout slot-scope="{ hover }" :class="`${hover ? 'transition-fast-in-fast-out grey lighten-5': '' }`" row wrap offset-lg-1 class=" text-md-center subheading font-weight-light">
+                        <v-flex xs8 sm12 md4 class="text-md-left pa-2" style="border-right: 1px solid #eeeeee">
+                          <div class="pl-2">
+                          <span>
+                            <v-icon class="mr-2">person</v-icon>
+                          </span>
+                            <span>Водопостачання</span>
+                          </div>
+                        </v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>544545</div></v-flex>
+                        <v-flex xs8 sm4 md2 class="pa-2"><div>Травень</div></v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>0.00</div></v-flex>
+                      </v-layout>
+                    </v-hover>
+                    <v-hover>
+                      <v-layout slot-scope="{ hover }" :class="`${hover ? 'transition-fast-in-fast-out grey lighten-5': '' }`" row wrap offset-lg-1 class=" text-md-center subheading font-weight-light">
+                        <v-flex xs8 sm12 md4 class="text-md-left pa-2" style="border-right: 1px solid #eeeeee">
+                          <div class="pl-2">
+                          <span>
+                            <v-icon class="mr-2">person</v-icon>
+                          </span>
+                            <span>Водопостачання</span>
+                          </div>
+                        </v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>544545</div></v-flex>
+                        <v-flex xs8 sm4 md2 class="pa-2"><div>Травень</div></v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>0.00</div></v-flex>
+                      </v-layout>
+                    </v-hover>
+                    <v-hover>
+                      <v-layout slot-scope="{ hover }" :class="`${hover ? 'transition-fast-in-fast-out grey lighten-5': '' }`" row wrap offset-lg-1 class=" text-md-center subheading font-weight-light">
+                        <v-flex xs8 sm12 md4 class="text-md-left pa-2" style="border-right: 1px solid #eeeeee">
+                          <div class="pl-2">
+                          <span>
+                            <v-icon class="mr-2">person</v-icon>
+                          </span>
+                            <span>Водопостачання</span>
+                          </div>
+                        </v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>544545</div></v-flex>
+                        <v-flex xs8 sm4 md2 class="pa-2"><div>Травень</div></v-flex>
+                        <v-flex xs4 sm4 md3 class="pa-2"><div>0.00</div></v-flex>
+                      </v-layout>
+                    </v-hover>
+                  </v-flex>
+                  <v-flex md2 class="grey lighten-5">
+                    <v-container style="border-left: 1px solid #d9d9d9">
+                      <v-layout align-center justify-space-around row fill-height wrap class="pl-2 text-md-center">
                         <v-flex md12>
                           <h4>Оплачено цього місяця:</h4>
                           <h2 class="mb-2">296.00</h2>
@@ -206,7 +219,6 @@
                 </v-layout>
               </v-flex>
             </v-layout>
-          </v-container>
         </v-card-text>
       </v-card>
     </v-container>
